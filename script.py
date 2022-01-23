@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+from pathlib import Path
+import string
 
 
 class Answer:
@@ -7,9 +9,8 @@ class Answer:
 
     def printAnswer(self):
         print(
-            "EVALUATED GOOD PRACTICE : "
-            + self.goodPractice.name
-            + " grade : "
+            "Evaluated Good Practice: %s" % self.goodPractice.name
+            + " grade"
             + str(self.goodPractice.grade)
             + "\n criticity : "
             + self.goodPractice.criticity
@@ -40,6 +41,7 @@ class GPHasName(GoodPractice):
         self.comment = comment
 
     def evaluate(self):
+        print("Grade " +  str(self.grade) + " / " + str(self.maxgrade))
         return self.grade / self.maxgrade
 
     def generateComment(self):
@@ -52,26 +54,43 @@ class GPHasName(GoodPractice):
                 " Warning ! You should name your rule files in the main.yml file"
             )
 
-    def parse(self):
-        f = open("main.yml", "r")
-        str = "name:"
+    def parse(self, filelist):
+        length = len(filelist)
+        print("Evaluating " + str(length) + " files...")
         counter = 0
         gradeCounter = 0
-        for line in f:
-            if str not in line:
-                continue
-            if line.split("- name:", 1)[1] != "":
+        for file in filelist:
+
+            f = open(file, "r", encoding="utf8")
+            strname = "name:"
+
+            for line in f:
+                if strname not in line:
+                    continue
+                if line.split("- name:", 1)[1] != "":
                 # print("name isnt empty : " + line.split("- name:",1)[1])
-                gradeCounter += 1
-            counter += 1
+                    gradeCounter += 1
+                counter += 1
 
         self.maxgrade = counter
         self.grade = gradeCounter
         self.generateComment()
 
 
-c = GPHasName("Naming", "Lowest")
-c.parse()
+class Parser:
+    def parseDirectoryForTasks(self, directory):
+        pathlist = Path(directory).glob("**/*.yml")
+        L = []
+        for path in pathlist:
+            # because path is object not string
+            path_in_str = str(path)
+            L.append(path_in_str)
+        return L
+
+
+parser = Parser()
+c = GPHasName("Task naming", "Lowest")
+c.parse(parser.parseDirectoryForTasks("repo_examples"))
 print(c.evaluate())
 a = Answer(c)
 a.printAnswer()
