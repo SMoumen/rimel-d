@@ -8,7 +8,7 @@ class Answer :
 
     
     def printAnswer(self) :
-        print("EVALUATED GOOD PRACTICE : " + self.goodPractice.name + " grade : " + str(self.goodPractice.grade) + " criticity : " + self.goodPractice.criticity + self.goodPractice.comment)
+        print("EVALUATED GOOD PRACTICE : " + self.goodPractice.name + " grade : " + str(self.goodPractice.grade) + "\n criticity : " + self.goodPractice.criticity + self.goodPractice.comment)
     
     
    
@@ -21,6 +21,9 @@ class GoodPractice(ABC) :
     
     @abstractmethod
     def parse(self) : return 
+    
+    @abstractmethod 
+    def generateComment(self) : return
 
 
 class GPHasName(GoodPractice) :
@@ -33,7 +36,11 @@ class GPHasName(GoodPractice) :
         self.criticity =criticity
         self.comment = comment
     def evaluate(self) : return self.grade/self.maxgrade       
-   
+    
+    def generateComment(self) : 
+        if(self.grade == self.maxgrade) : self.comment = " You have correctly respected the " + self.name + " good practice! "
+        elif(self.grade < self.maxgrade / 2) : self.comment = " Warning ! You should name your rule files in the main.yml file" 
+          
     def parse(self) : 
         f = open("main.yml","r")
         str = "name:"
@@ -42,12 +49,15 @@ class GPHasName(GoodPractice) :
         for line in f : 
             if(str not in line) : continue
             if(line.split("- name:",1)[1] != ""):
-                print("name isnt empty : " + line.split("- name:",1)[1])
+                #print("name isnt empty : " + line.split("- name:",1)[1])
                 gradeCounter += 1
             counter += 1
             
         self.maxgrade = counter
         self.grade = gradeCounter
+        self.generateComment()
+        
+
         
    
    
