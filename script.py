@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
+import os
 from pathlib import Path
-import string
-
+import goodPractices
+from goodPractices.DeprecatedModules import DeprecatedModules
+from goodPractices.Git import GitGP
 
 class Answer:
     def __init__(self, goodPractice) -> None:
@@ -21,7 +23,8 @@ class Answer:
 class GoodPractice(ABC):
     @abstractmethod
     def evaluate(self):
-        return 0
+        return
+        
 
     @abstractmethod
     def parse(self):
@@ -41,6 +44,7 @@ class GPHasName(GoodPractice):
         self.comment = comment
 
     def evaluate(self):
+        print("Evaluating Good Practice " + self.__class__.__name__)
         print("Grade " +  str(self.grade) + " / " + str(self.maxgrade))
         return self.grade / self.maxgrade
 
@@ -89,8 +93,23 @@ class Parser:
 
 
 parser = Parser()
-c = GPHasName("Task naming", "Lowest")
-c.parse(parser.parseDirectoryForTasks("repo_examples"))
-print(c.evaluate())
+
+ROOT_FOLDER = "repo_examples/"
+
+for dir_path in os.listdir(ROOT_FOLDER):
+    print("Parsing in progress project directory:", dir_path)
+    abs_path = ROOT_FOLDER + dir_path
+    c = GPHasName("Task naming", "Lowest")
+    c.parse(parser.parseDirectoryForTasks(abs_path))
+    print(c.evaluate())
+
+    t = GitGP()
+    t.parse(abs_path)
+    print(t.evaluate())
+    
+    d = DeprecatedModules()
+    d.parse(parser.parseDirectoryForTasks(abs_path))
+    d.evaluate()
+
 a = Answer(c)
 a.printAnswer()
