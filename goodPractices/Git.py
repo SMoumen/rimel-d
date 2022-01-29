@@ -1,8 +1,9 @@
 import os
 
+from goodPractices.abstractClass import GoodPractice
 
 
-class GitGP():
+class GitGP(GoodPractice):
     def __init__(self, name="Git", criticity="MEDIUM", grade=0, maxgrade=1, comment=""):
         self.name = name
         self.criticity = criticity
@@ -15,5 +16,5 @@ class GitGP():
         return self.grade / self.maxgrade
 
     def parse(self, path):
-        if(".git" in os.listdir(path)):
+        if ".git" in os.listdir(path):
             self.grade += 1

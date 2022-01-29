@@ -1,7 +1,15 @@
+from goodPractices.abstractClass import GoodPractice
 
 
-class DeprecatedModules():
-    def __init__(self, name = "DeprecatedModules", criticity = "HIGHEST", grade=0, maxgrade=0, comment=""):
+class DeprecatedModules(GoodPractice):
+    def __init__(
+        self,
+        name="DeprecatedModules",
+        criticity="HIGHEST",
+        grade=0,
+        maxgrade=0,
+        comment="",
+    ):
         self.grade = grade
         self.maxgrade = maxgrade
         self.name = name
@@ -11,7 +19,6 @@ class DeprecatedModules():
     def evaluate(self):
         print("Evaluating Good Practice " + self.__class__.__name__)
         print("Found use of  " + str(self.grade) + " deprecated modules")
-        
 
     def parse(self, filelist):
 
@@ -66,7 +73,7 @@ class DeprecatedModules():
             f = open(file, "r", encoding="utf8")
             for line in f:
                 for i in modules:
-                    if i+":" in line:
+                    if i + ":" in line:
                         print(
                             "Detected usage of deprecated module "
                             + i
@@ -78,3 +85,6 @@ class DeprecatedModules():
 
         self.maxgrade = counter
         self.grade = badGradeCounter
+
+    def generateComment(self):
+        return
