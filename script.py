@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from goodPractices.DeprecatedModules import DeprecatedModules
 from goodPractices.Git import GitGP
+from goodPractices.NoLocalActionInTask import NoLocalAction
 from goodPractices.NoTabs import NoTabs
 from goodPractices.TaskHasName import GPHasName
 
@@ -54,6 +55,11 @@ for dir_path in os.listdir(ROOT_FOLDER):
     tabs = NoTabs()
     tabs.parse(parser.parseDirectoryForTasks(abs_path))
     tabs.evaluate()
+    
+    nolocal = NoLocalAction()
+    nolocal.parse(parser.parseDirectoryForTasks(abs_path))
+    nolocal.evaluate()
+
 
 a = Answer(c)
 a.printAnswer()
