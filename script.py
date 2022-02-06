@@ -2,8 +2,8 @@ import os
 from pathlib import Path
 from goodPractices.DeprecatedModules import DeprecatedModules
 from goodPractices.Git import GitGP
+from goodPractices.NoTabs import NoTabs
 from goodPractices.TaskHasName import GPHasName
-from goodPractices.abstractClass import GoodPractice
 
 
 class Answer:
@@ -50,6 +50,10 @@ for dir_path in os.listdir(ROOT_FOLDER):
     d = DeprecatedModules()
     d.parse(parser.parseDirectoryForTasks(abs_path))
     d.evaluate()
+
+    tabs = NoTabs()
+    tabs.parse(parser.parseDirectoryForTasks(abs_path))
+    tabs.evaluate()
 
 a = Answer(c)
 a.printAnswer()

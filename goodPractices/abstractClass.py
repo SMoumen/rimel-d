@@ -10,6 +10,4 @@ class GoodPractice(ABC):
     def parse(self):
         return
 
-    @abstractmethod
-    def generateComment(self):
-        return
+
