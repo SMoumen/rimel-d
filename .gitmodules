@@ -1,3 +1,7 @@
 [submodule "repo_examples/ansible-elasticsearch"]
 	path = repo_examples/ansible-elasticsearch
 	url = https://github.com/elastic/ansible-elasticsearch.git
+[submodule "repo_examples/ansible"]
+	path = repo_examples/ansible
+	url = https://github.com/LDSanches/ansible.git
+
