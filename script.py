@@ -35,7 +35,7 @@ class Parser:
 
 parser = Parser()
 
-ROOT_FOLDER = "repo_examples/"
+ROOT_FOLDER = "repo_database/"
 
 for dir_path in os.listdir(ROOT_FOLDER):
     print("Parsing in progress project directory:", dir_path)
