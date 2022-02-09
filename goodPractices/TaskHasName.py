@@ -29,18 +29,31 @@ class GPHasName(GoodPractice):
         print("Evaluating " + str(length) + " files...")
         counter = 0
         gradeCounter = 0
+        badGradeCounter = 0
+        badTokens = ['#', '---']
         for file in filelist:
 
             f = open(file, "r", encoding="utf8")
             strname = "name:"
-
+            flag = False
+            line_counter = 0
             for line in f:
-                if strname not in line:
+                line_counter += 1
+                if  any(ext in line for ext in badTokens):
+                    continue 
+                if line == '\n' and flag == False: 
+                    flag = True
+                    counter += 1 # task identified on next line 
                     continue
-                if line.split("- name:", 1)[1] != "":
-                    # print("name isnt empty : " + line.split("- name:",1)[1])
+                if flag and strname in line and line.split("name:", 1)[1] != "":
+                    flag = False
                     gradeCounter += 1
-                counter += 1
+                    continue
+                if flag and ((strname not in line) or (strname in line and line.split("name:", 1)[1] == "")):
+                    badGradeCounter += 1
+                    print("Unamed task found on line " + str(line_counter) + "file " + file)
+                    flag = False
+                    continue
 
         self.maxgrade = counter
         self.grade = gradeCounter
