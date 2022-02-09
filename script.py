@@ -35,6 +35,7 @@ class Parser:
 
 parser = Parser()
 
+<<<<<<< HEAD
 def parseAndSlash(classNameList):
     for className in classNameList:
         e = className
@@ -42,6 +43,9 @@ def parseAndSlash(classNameList):
         print(e.evaluate)
 
 ROOT_FOLDER = "repo_examples/"
+=======
+ROOT_FOLDER = "repo_database/"
+>>>>>>> 35154f634b9ef2dd116bc676d15ec98bd9db4d55
 
 for dir_path in os.listdir(ROOT_FOLDER):
     print("Parsing in progress project directory:", dir_path)
