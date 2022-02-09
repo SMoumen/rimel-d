@@ -5,7 +5,7 @@ from goodPractices.Git import GitGP
 from goodPractices.NoLocalActionInTask import NoLocalAction
 from goodPractices.NoTabs import NoTabs
 from goodPractices.TaskHasName import GPHasName
-
+from goodPractices.PlaybookExtension import PlaybookExtension
 
 class Answer:
     def __init__(self, goodPractice) -> None:
@@ -35,11 +35,20 @@ class Parser:
 
 parser = Parser()
 
+def parseAndSlash(classNameList):
+    for className in classNameList:
+        e = className
+        e.parse(parser.parseDirectoryForTasks(abs_path))
+        print(e.evaluate)
+
 ROOT_FOLDER = "repo_examples/"
 
 for dir_path in os.listdir(ROOT_FOLDER):
     print("Parsing in progress project directory:", dir_path)
     abs_path = ROOT_FOLDER + dir_path
+
+
+    
     c = GPHasName("Task naming", "Lowest")
     c.parse(parser.parseDirectoryForTasks(abs_path))
     print(c.evaluate())
@@ -52,6 +61,7 @@ for dir_path in os.listdir(ROOT_FOLDER):
     d.parse(parser.parseDirectoryForTasks(abs_path))
     d.evaluate()
 
+
     tabs = NoTabs()
     tabs.parse(parser.parseDirectoryForTasks(abs_path))
     tabs.evaluate()
@@ -59,6 +69,10 @@ for dir_path in os.listdir(ROOT_FOLDER):
     nolocal = NoLocalAction()
     nolocal.parse(parser.parseDirectoryForTasks(abs_path))
     nolocal.evaluate()
+
+    playbookExtension = PlaybookExtension()
+    playbookExtension.parse(parser.parseDirectoryForTasks(abs_path))
+    playbookExtension.evaluate()
 
 
 a = Answer(c)
