@@ -25,27 +25,26 @@ class Answer:
 class Parser:
     def parseDirectoryForTasks(self, directory):
         pathlist = Path(directory).glob("**/*.yml")
+        bannedList = ["\.github",".travis.yml","\\meta\\","\\.circleci\\","\\.ci\\"]
         L = []
         for path in pathlist:
             # because path is object not string
             path_in_str = str(path)
+            if  any(ext in path_in_str for ext in bannedList):
+                continue
             L.append(path_in_str)
         return L
 
 
 parser = Parser()
 
-<<<<<<< HEAD
 def parseAndSlash(classNameList):
     for className in classNameList:
         e = className
         e.parse(parser.parseDirectoryForTasks(abs_path))
         print(e.evaluate)
 
-ROOT_FOLDER = "repo_examples/"
-=======
 ROOT_FOLDER = "repo_database/"
->>>>>>> 35154f634b9ef2dd116bc676d15ec98bd9db4d55
 
 for dir_path in os.listdir(ROOT_FOLDER):
     print("Parsing in progress project directory:", dir_path)
