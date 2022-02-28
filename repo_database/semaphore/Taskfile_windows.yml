@@ -1,0 +1,6 @@
+version: '2'
+tasks:
+  compile:be:
+    cmds:
+      - packr
+      - go run util/version_gen/generator.go 1
