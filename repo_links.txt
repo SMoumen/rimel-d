@@ -1,0 +1,15 @@
+https://github.com/mesaguy/ansible-prometheus
+https://github.com/geerlingguy/ansible-role-nginx
+https://github.com/geerlingguy/mac-dev-playbook
+https://github.com/ceph/ceph-ansible
+https://github.com/geerlingguy/ansible-role-jenkins
+https://github.com/geerlingguy/ansible-role-docker
+https://github.com/openshift/openshift-ansible
+https://github.com/openstack/openstack-ansible
+https://github.com/fboender/ansible-cmdb
+https://github.com/spantaleev/matrix-docker-ansible-deploy
+https://github.com/geerlingguy/ansible-role-gitlab
+https://github.com/geerlingguy/ansible-role-php
+https://github.com/RaymiiOrg/ansible
+https://github.com/geerlingguy/ansible-for-kubernetes
+https://github.com/dev-sec/ansible-collection-hardening

@@ -1,0 +1,19 @@
+- hosts: computers
+  tasks:
+  - name: Update additional software
+    win_chocolatey:
+      name: all
+      state: latest
+    tags: choco
+
+  - name: Create directory
+    win_file:
+      path: C:\Crombeen\Logs
+      state: directory
+
+  - name: Install Windows updates
+    win_updates:
+      log_path: C:\Crombeen\Logs\win_updates.log
+      reboot: yes
+      state: installed
+    tags: win
