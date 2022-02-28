@@ -19,7 +19,7 @@ class NoLocalAction(GoodPractice):
                 if "local_action" in line:
                     print(
                         "Presence of local_action detected on line "
-                        + linecounter
+                        + str(linecounter)
                         + " in file "
                         + file
                     )

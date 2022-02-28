@@ -51,7 +51,7 @@ class GPHasName(GoodPractice):
                     continue
                 if flag and ((strname not in line) or (strname in line and line.split("name:", 1)[1] == "")):
                     badGradeCounter += 1
-                    print("Unamed task found on line " + str(line_counter) + "file " + file)
+                    #print("Unamed task found on line " + str(line_counter) + "file " + file)
                     flag = False
                     continue
 

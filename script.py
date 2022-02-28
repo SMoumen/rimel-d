@@ -7,6 +7,7 @@ from goodPractices.NoTabs import NoTabs
 from goodPractices.TaskHasName import GPHasName
 from goodPractices.PlaybookExtension import PlaybookExtension
 
+
 class Answer:
     def __init__(self, goodPractice) -> None:
         self.goodPractice = goodPractice
@@ -25,12 +26,12 @@ class Answer:
 class Parser:
     def parseDirectoryForTasks(self, directory):
         pathlist = Path(directory).glob("**/*.yml")
-        bannedList = ["\.github",".travis.yml","\\meta\\","\\.circleci\\","\\.ci\\"]
+        bannedList = ["\.github", ".travis.yml", "\\meta\\", "\\.circleci\\", "\\.ci\\"]
         L = []
         for path in pathlist:
             # because path is object not string
             path_in_str = str(path)
-            if  any(ext in path_in_str for ext in bannedList):
+            if any(ext in path_in_str for ext in bannedList):
                 continue
             L.append(path_in_str)
         return L
@@ -38,11 +39,13 @@ class Parser:
 
 parser = Parser()
 
+
 def parseAndSlash(classNameList):
     for className in classNameList:
         e = className
         e.parse(parser.parseDirectoryForTasks(abs_path))
         print(e.evaluate)
+
 
 ROOT_FOLDER = "repo_database/"
 
@@ -50,8 +53,6 @@ for dir_path in os.listdir(ROOT_FOLDER):
     print("Parsing in progress project directory:", dir_path)
     abs_path = ROOT_FOLDER + dir_path
 
-
-    
     c = GPHasName("Task naming", "Lowest")
     c.parse(parser.parseDirectoryForTasks(abs_path))
     print(c.evaluate())
@@ -64,11 +65,10 @@ for dir_path in os.listdir(ROOT_FOLDER):
     d.parse(parser.parseDirectoryForTasks(abs_path))
     d.evaluate()
 
-
     tabs = NoTabs()
     tabs.parse(parser.parseDirectoryForTasks(abs_path))
     tabs.evaluate()
-    
+
     nolocal = NoLocalAction()
     nolocal.parse(parser.parseDirectoryForTasks(abs_path))
     nolocal.evaluate()
@@ -77,6 +77,5 @@ for dir_path in os.listdir(ROOT_FOLDER):
     playbookExtension.parse(parser.parseDirectoryForTasks(abs_path))
     playbookExtension.evaluate()
 
+print("successfully parsed " + str(len(os.listdir(ROOT_FOLDER))) + " ansible projects")
 
-a = Answer(c)
-a.printAnswer()
