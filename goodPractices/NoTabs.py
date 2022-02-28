@@ -19,7 +19,7 @@ class NoTabs(GoodPractice):
                 if "\t" in line:
                     print(
                         "Presence of tabs detected on line "
-                        + linecounter
+                        + str(linecounter)
                         + " in file "
                         + file
                     )
