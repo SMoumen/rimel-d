@@ -1,13 +1,17 @@
 import os
 from pathlib import Path
+from goodPractices.BooleanCompare import BooleanCompare
 from goodPractices.DeprecatedModules import DeprecatedModules
+from goodPractices.EmptyStrCompare import EmptyStringCompare
 from goodPractices.Git import GitGP
+from goodPractices.IgnoreErrors import IgnoreErrors
 from goodPractices.NoLocalActionInTask import NoLocalAction
 from goodPractices.NoTabs import NoTabs
 from goodPractices.TaskHasName import GPHasName
 from goodPractices.PlaybookExtension import PlaybookExtension
-
-
+import xlsxwriter
+import xlwt
+import pandas as pd
 class Answer:
     def __init__(self, goodPractice) -> None:
         self.goodPractice = goodPractice
@@ -48,34 +52,62 @@ def parseAndSlash(classNameList):
 
 
 ROOT_FOLDER = "repo_database/"
+data = []
 
 for dir_path in os.listdir(ROOT_FOLDER):
     print("Parsing in progress project directory:", dir_path)
+    if dir_path == "ansible-cmdb" : continue
     abs_path = ROOT_FOLDER + dir_path
+    L = []
+    L.append(dir_path)
 
     c = GPHasName("Task naming", "Lowest")
     c.parse(parser.parseDirectoryForTasks(abs_path))
-    print(c.evaluate())
-
+    L.append(c.evaluate())
+    
     t = GitGP()
     t.parse(abs_path)
-    print(t.evaluate())
+    L.append(t.evaluate())
 
     d = DeprecatedModules()
     d.parse(parser.parseDirectoryForTasks(abs_path))
-    d.evaluate()
+    L.append(d.evaluate())
 
     tabs = NoTabs()
     tabs.parse(parser.parseDirectoryForTasks(abs_path))
-    tabs.evaluate()
+    L.append(tabs.evaluate())
 
     nolocal = NoLocalAction()
     nolocal.parse(parser.parseDirectoryForTasks(abs_path))
-    nolocal.evaluate()
+    L.append(nolocal.evaluate())
 
     playbookExtension = PlaybookExtension()
     playbookExtension.parse(parser.parseDirectoryForTasks(abs_path))
-    playbookExtension.evaluate()
+    L.append(playbookExtension.evaluate())
+    
+    
+    emptyStr = EmptyStringCompare()
+    emptyStr.parse(parser.parseDirectoryForTasks(abs_path))
+    L.append(emptyStr.evaluate())
+    
+    ignore_error = IgnoreErrors()
+    ignore_error.parse(parser.parseDirectoryForTasks(abs_path))
+    L.append(ignore_error.evaluate())
+    
+    bool_compare = BooleanCompare()
+    bool_compare.parse(parser.parseDirectoryForTasks(abs_path))
+    L.append(bool_compare.evaluate())
+    
+    
+    data.append(L)
 
 print("successfully parsed " + str(len(os.listdir(ROOT_FOLDER))) + " ansible projects")
 
+workbook = xlwt.Workbook()
+sheet = workbook.add_sheet("Sheet")
+
+for i in range(len(data)):
+    for j in range(len(data[i])):
+        sheet.write(i, j, data[i][j])
+
+workbook.save("test.xls")

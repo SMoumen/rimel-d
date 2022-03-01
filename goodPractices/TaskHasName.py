@@ -12,7 +12,7 @@ class GPHasName(GoodPractice):
     def evaluate(self):
         print("Evaluating Good Practice " + self.__class__.__name__)
         print("Grade " + str(self.grade) + " / " + str(self.maxgrade))
-        return self.grade / self.maxgrade
+        return (self.grade / self.maxgrade) * 100
 
     def generateComment(self):
         if self.grade == self.maxgrade:

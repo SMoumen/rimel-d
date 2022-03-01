@@ -19,6 +19,7 @@ class DeprecatedModules(GoodPractice):
     def evaluate(self):
         print("Evaluating Good Practice " + self.__class__.__name__)
         print("Found use of  " + str(self.grade) + " deprecated modules")
+        return (self.grade / self.maxgrade) * 100 
 
     def parse(self, filelist):
 

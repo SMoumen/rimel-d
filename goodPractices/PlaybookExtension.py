@@ -25,3 +25,5 @@ class PlaybookExtension(GoodPractice):
             + str(self.grade)
             + " files that contained wrong extension "
         )
+        return 100 - (self.badGradeCounter / self.grade) * 100
+        
