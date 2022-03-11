@@ -19,7 +19,7 @@ class EmptyStringCompare(GoodPractice):
     def evaluate(self):
         print("Evaluating Good Practice " + self.__class__.__name__)
         print("Found use of  " + str(self.grade) + " deprecated modules")
-        return (self.grade / self.maxgrade) * 100 
+        return 100 - (self.grade / self.maxgrade) * 100 
 
     def parse(self, filelist):
 
@@ -38,7 +38,7 @@ class EmptyStringCompare(GoodPractice):
             f = open(file, "r", encoding="utf8")
             for line in f:
                 for i in banned_list:
-                    if i + ":" in line:
+                    if i in line:
                         print(
                             "Detected usage of empty string declaration"
                             + i

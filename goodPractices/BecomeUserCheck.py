@@ -1,10 +1,10 @@
 from goodPractices.abstractClass import GoodPractice
 
 
-class BooleanCompare(GoodPractice):
+class BecomeUserWithoutBecome(GoodPractice):
     def __init__(
         self,
-        name="BooleanCompare",
+        name="BecomeUserWithoutBecome",
         criticity="HIGHEST",
         grade=0,
         maxgrade=0,
@@ -19,38 +19,34 @@ class BooleanCompare(GoodPractice):
     def evaluate(self):
         print("Evaluating Good Practice " + self.__class__.__name__)
         print("Found use of  " + str(self.grade) + " deprecated modules")
-        return 100 - (self.grade / self.maxgrade) * 100 
+        return 100 - (self.grade / self.maxgrade) * 100
 
     def parse(self, filelist):
 
-        banned_list = [
-            "== True",
-            "== False",
-            "== false",
-            "== true",
-            "!= True",
-            "!= False",
-            "!= false",
-            "!= true",
-        ]
         for file in filelist:
             length = len(filelist)
         print("Evaluating " + str(length) + " files...")
         counter = 0
         badGradeCounter = 0
+        flag = False
+        previous_line = False
         for file in filelist:
-
             f = open(file, "r", encoding="utf8")
             for line in f:
-                for i in banned_list:
-                    if i in line:
-                        print(
-                            "Detected usage of boolean comparison "
-                            + i
-                            + " in file "
-                            + file
-                        )
-                        badGradeCounter += 1
+                previous_line = False
+                if "become:" in line:
+                    flag = True
+                    previous_line = True
+                if "become_user" in line and flag == False:
+                    print(
+                        "Detected usage of become_users without become"
+                        + " in file "
+                        + file
+                    )
+                    badGradeCounter += 1
+                if previous_line == False:
+                    flag = False
+
             counter += 1
 
         self.maxgrade = counter

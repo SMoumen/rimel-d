@@ -19,7 +19,7 @@ class IgnoreErrors(GoodPractice):
     def evaluate(self):
         print("Evaluating Good Practice " + self.__class__.__name__)
         print("Found use of  " + str(self.grade) + " ignore erros")
-        return (self.grade / self.maxgrade) * 100 
+        return 100 - (self.grade / self.maxgrade) * 100 
 
     def parse(self, filelist):
 
