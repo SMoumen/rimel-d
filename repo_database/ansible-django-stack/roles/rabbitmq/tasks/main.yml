@@ -1,0 +1,47 @@
+---
+
+- name: Add the RabbitMQ release signing key to the apt trusted keys
+  apt_key: url=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/gpg.9F4587F226208342.key
+           state=present
+
+- name: Add the RabbitMQ repository to the apt sources list
+  apt_repository: repo='deb https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/deb/ubuntu {{ ansible_distribution_release }} main'
+                  update_cache={{ update_apt_cache }}
+                  state=present
+
+- name: Add the RabbitMQ Erlang signing key to the apt trusted keys
+  apt_key: url=https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+           state=present
+
+- name: Add the RabbitMQ Erlang repository to the apt sources list
+  apt_repository: repo='deb https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/deb/ubuntu {{ ansible_distribution_release }} main'
+                  update_cache={{ update_apt_cache }}
+                  state=present
+
+
+- name: Install RabbitMQ server
+  apt:
+    update_cache: "{{ update_apt_cache }}"
+    state: present
+    name:
+      - rabbitmq-server
+  tags:
+    - packages
+
+- name: Make sure rabbitmq-server is enabled and running
+  service:
+    name: rabbitmq-server
+    state: started
+    enabled: true
+    # TODO: This is likely due to a bug in Ansible.
+    # Remove this line in the future.
+    # See https://github.com/ansible/ansible/issues/75005
+    use: sysvinit
+
+- name: Enable the RabbitMQ Management Console
+  rabbitmq_plugin: names=rabbitmq_management state=enabled
+  notify: restart rabbitmq-server
+
+- include: setup_vhosts.yml
+
+- include: setup_users.yml

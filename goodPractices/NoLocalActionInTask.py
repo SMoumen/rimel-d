@@ -37,5 +37,8 @@ class NoLocalAction(GoodPractice):
             + str(self.grade)
             + " files that contained local action in task"
         )
-        return 100 - (self.badGradeCounter / self.grade) * 100
+        return str(self.grade - self.badGradeCounter) + " // " + str(self.grade)
+    
+    def evaluate_percentage(self):
+        return str(100 - (self.badGradeCounter / self.grade) * 100) + "%"
         

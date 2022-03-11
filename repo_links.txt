@@ -13,3 +13,13 @@ https://github.com/geerlingguy/ansible-role-php
 https://github.com/RaymiiOrg/ansible
 https://github.com/geerlingguy/ansible-for-kubernetes
 https://github.com/dev-sec/ansible-collection-hardening
+https://github.com/davestephens/ansible-nas
+https://github.com/iaasweek/ansible
+https://github.com/ansiblebook/ansiblebook
+https://github.com/openstack/kolla-ansible
+https://github.com/geerlingguy/ansible-role-postgresql
+https://github.com/geerlingguy/ansible-role-java
+https://github.com/geerlingguy/ansible-role-apache
+https://github.com/jcalazan/ansible-django-stack
+https://github.com/geerlingguy/ansible-role-nodejs
+https://github.com/geerlingguy/ansible-role-ansible

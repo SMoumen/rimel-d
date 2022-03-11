@@ -19,8 +19,9 @@ class IgnoreErrors(GoodPractice):
     def evaluate(self):
         print("Evaluating Good Practice " + self.__class__.__name__)
         print("Found use of  " + str(self.grade) + " ignore erros")
-        return 100 - (self.grade / self.maxgrade) * 100 
-
+        return str(self.maxgrade - self.grade) + " // " + str(self.maxgrade)
+    def evaluate_percentage(self):
+        return str(100 - (self.grade / self.maxgrade) * 100) + "%"
     def parse(self, filelist):
 
 
@@ -44,6 +45,8 @@ class IgnoreErrors(GoodPractice):
             counter += 1
 
         self.maxgrade = counter
+        if(badGradeCounter > counter) : 
+            badGradeCounter = counter
         self.grade = badGradeCounter
 
     def generateComment(self):

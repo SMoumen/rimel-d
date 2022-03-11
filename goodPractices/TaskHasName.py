@@ -11,8 +11,8 @@ class GPHasName(GoodPractice):
 
     def evaluate(self):
         print("Evaluating Good Practice " + self.__class__.__name__)
-        print("Grade " + str(self.grade) + " / " + str(self.maxgrade))
-        return (self.grade / self.maxgrade) * 100
+        print("Grade " + str(self.grade) + " // " + str(self.maxgrade))
+        return str(self.maxgrade - self.grade) + " // " + str(self.maxgrade)
 
     def generateComment(self):
         if self.grade == self.maxgrade:
@@ -23,7 +23,8 @@ class GPHasName(GoodPractice):
             self.comment = (
                 " Warning ! You should name your rule files in the main.yml file"
             )
-
+    def evaluate_percentage(self):
+        return str(100 - (self.grade / self.maxgrade) * 100) + "%"
     def parse(self, filelist):
         length = len(filelist)
         print("Evaluating " + str(length) + " files...")

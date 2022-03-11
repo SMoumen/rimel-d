@@ -1,0 +1,8 @@
+---
+# these are obviously for demo purposes.
+munin_password: 'IT-audited?'
+vault_postgres_user: 'dba'
+vault_postgres_pass: 'IT-audited?'
+pg_password: "{{ vault_postgres_pass }}"
+redis_password: 'IT-audited?'
+tower_validate_certs: false
