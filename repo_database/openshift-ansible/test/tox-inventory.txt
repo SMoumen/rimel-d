@@ -1,3 +1,0 @@
-localhost
-[new_workers]
-[workers]

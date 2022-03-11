@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Deploys and configures a prometheus-libvirt-exporter image as part of the
-    Prometheus monitoring stack.

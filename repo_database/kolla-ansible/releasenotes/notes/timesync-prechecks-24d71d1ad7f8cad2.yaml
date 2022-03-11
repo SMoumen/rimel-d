@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Adds timesync prechecks which run when containerised chrony is not enabled
-    to ensure the host has its system clock synchronized.

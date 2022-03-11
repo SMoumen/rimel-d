@@ -1,5 +1,0 @@
----
-fixes:
-  - |
-    Fixes more-than-2-node RabbitMQ upgrade failing randomly.
-    `LP#1930293 <https://launchpad.net/bugs/1930293>`__.

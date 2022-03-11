@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Adds support to import custom Grafana dashboards. The dashboard JSON files
-    should be placed into ``{{ node_custom_config }}/grafana/dashboards/``.

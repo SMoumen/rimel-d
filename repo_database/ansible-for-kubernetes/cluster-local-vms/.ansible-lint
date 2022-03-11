@@ -1,5 +1,0 @@
-skip_list:
-  - no-handler
-  - role-name
-  - risky-shell-pipe
-  - no-changed-when

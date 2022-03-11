@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Implement ``ceph-nfs`` service, ``nfs-ganesha`` can be used as a proxy when
-    mounting ceph file shares.

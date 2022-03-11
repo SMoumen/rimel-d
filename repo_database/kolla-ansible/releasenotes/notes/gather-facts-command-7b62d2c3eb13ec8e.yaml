@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Adds a ``kolla-ansible gather-facts`` command that may be used to gather
-    Ansible host facts.

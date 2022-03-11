@@ -1,5 +1,0 @@
----
-fixes:
-  - |
-    Fixes issue where HAProxy would have no backend servers in its config files
-    when using the "split" config template style.

@@ -1,5 +1,0 @@
----
-fixes:
-  - |
-    Fixes an issue with Magnum when TLS is enabled. `LP#781062
-    <https://review.opendev.org/c/openstack/kolla-ansible/+/781062>`__

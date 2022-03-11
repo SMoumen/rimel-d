@@ -1,5 +1,0 @@
----
-fixes:
-  - |
-    Removes deprecated ``export_synchronous`` option from Designate
-    config.

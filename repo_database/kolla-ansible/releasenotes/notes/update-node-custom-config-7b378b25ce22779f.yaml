@@ -1,5 +1,0 @@
----
-upgrade:
-  - |
-    update the default value of node_custom_config to {{ node_config }}/config,
-    when specified using --configdir

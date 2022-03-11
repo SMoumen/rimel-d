@@ -1,5 +1,0 @@
----
-fixes:
-  - |
-    Fixes an issue with Manila configuration which was missing a ``[glance]``
-    section, preventing some drivers from operating.

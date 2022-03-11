@@ -1,5 +1,0 @@
----
-fixes:
-  - |
-    Removes whitespace around equal signs in ``zookeeper.cfg`` which were
-    preventing the ``zkCleanup.sh`` script from running correctly.

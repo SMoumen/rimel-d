@@ -1,6 +1,0 @@
-[letsencrypt]
-subdomain.example.com
-
-[letsencrypt:vars]
-ansible_user=myuser
-letsencrypt_email=webmaster@example.com

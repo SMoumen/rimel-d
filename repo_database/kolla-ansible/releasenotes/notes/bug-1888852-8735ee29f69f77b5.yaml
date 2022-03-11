@@ -1,5 +1,0 @@
----
-fixes:
-  - |
-    ``fluentd`` is now logging to ``/var/log/kolla/fluentd/fluentd.log``
-    instead of ``stdout``. `LP#1888852 <https://launchpad.net/bugs/1888852>`__

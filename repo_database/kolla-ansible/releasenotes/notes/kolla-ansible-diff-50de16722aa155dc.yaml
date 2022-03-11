@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Adds two new arguments to the ``kolla-ansible`` command, ``--check``
-    and ``--diff``. They are passed through directly to ``ansible-playbook``.

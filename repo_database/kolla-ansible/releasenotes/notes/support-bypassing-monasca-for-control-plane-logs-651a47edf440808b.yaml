@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Support sending control plane logs directly to
-    Elasticsearch when Monasca is enabled.

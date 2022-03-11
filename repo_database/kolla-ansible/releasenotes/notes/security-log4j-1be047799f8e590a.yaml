@@ -1,5 +1,0 @@
----
-security:
-  - |
-    Adds mitigation for the Apache Log4j2 Remote Code Execution (RCE)
-    Vulnerability in Elasticsearch - CVE-2021-44228.

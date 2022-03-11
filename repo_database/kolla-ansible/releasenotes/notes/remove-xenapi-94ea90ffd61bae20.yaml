@@ -1,4 +1,0 @@
----
-upgrade:
-  - |
-    Support for deploying with XenAPI integrations has been removed.

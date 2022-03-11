@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Adds new checks to ``kolla-ansible prechecks`` that validate that expected
-    Ansible groups exist.

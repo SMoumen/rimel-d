@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Adds a ``--clean`` argument to ``kolla-mergepwd``. It allows to clean old
-    (no longer used) keys from the passwords file.

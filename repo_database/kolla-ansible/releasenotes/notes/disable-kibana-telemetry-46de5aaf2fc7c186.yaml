@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Disables usage collection (telemetry) in Kibana by default. User has still
-    an option to enable it via GUI.

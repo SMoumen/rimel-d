@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Add a new container ``zun-cni-daemon`` for Zun service. This container
-    is a daemon service for implementing the CNI plugin for Zun.

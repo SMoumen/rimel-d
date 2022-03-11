@@ -1,5 +1,0 @@
----
-features:
-  - |
-    It is now possible to pass multiple inventories to ``kolla-ansible``. To do
-    so you should specify ``--inventory`` multiple times.

@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Add support for the OpenID Connect authentication protocol in Keystone and
-    enables both ID and access token authentication flows.

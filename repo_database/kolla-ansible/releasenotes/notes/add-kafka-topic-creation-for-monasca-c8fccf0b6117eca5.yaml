@@ -1,9 +1,0 @@
----
-features:
-  - |
-    Adds support for explicitly creating individually customisable topics
-    in Kafka for Monasca.
-fixes:
-  - |
-    Fixes a trivial issue where some Monasca containers could momentarily
-    restart when initially racing to create topics in Kafka.

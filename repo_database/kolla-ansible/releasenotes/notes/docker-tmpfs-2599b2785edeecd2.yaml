@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Adds support to the ``kolla_docker`` module for creating ``tmpfs`` mounts
-    for containers.

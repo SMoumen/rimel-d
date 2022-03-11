@@ -1,5 +1,0 @@
----
-fixes:
-  - |
-    Fixes an issue with ``config.json`` for ``neutron-server`` when a VMware
-    plugin agent is used.

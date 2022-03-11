@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Improves performance of the ``common`` role by generating all fluentd
-    configuration in a single file.

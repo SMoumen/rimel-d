@@ -1,5 +1,0 @@
----
-other:
-  - |
-    Following Cinder upstream, support for using ZFSSA with Cinder has been
-    removed. ZFSSA was unsupported in Train and later removed in Ussuri.

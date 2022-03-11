@@ -1,5 +1,0 @@
----
-features:
-  - |
-    Fluentd now buffers logs locally to file when the Monasca API is
-    unreachable.

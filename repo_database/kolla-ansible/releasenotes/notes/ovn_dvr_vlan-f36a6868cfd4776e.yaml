@@ -1,5 +1,0 @@
----
-features:
-  - |
-    OVN deployment will now configure ``external_ids:ovn-chassis-mac-mappings``
-    to make DVR work on VLAN tenant networks.

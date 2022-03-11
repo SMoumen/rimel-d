@@ -1,5 +1,0 @@
----
-upgrade:
-  - |
-    Kolla-Ansible now requires Ansible ``2.9``. Ansible ``2.8`` is not
-    supported anymore.
